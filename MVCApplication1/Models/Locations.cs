@@ -3,8 +3,8 @@
     public class Locations
     {
         public int Id { get; set; }
-        public int Place { get; set; }
-        public int Details { get; set; }
+        public string Place { get; set; }
+        public string Details { get; set; }
 
     }
 }

@@ -8,15 +8,24 @@ a.navbar-brand {
 }
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+
+a.btn {
+    background-color:deepskyblue;
+    color:white;
+}
+td a.btn {
+    background-color: green;
+    color: white;
+}
+#deletebtn{
+    background-color:red;
+    
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+div button {
+    background-color: #0f699e;
 }
+
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;

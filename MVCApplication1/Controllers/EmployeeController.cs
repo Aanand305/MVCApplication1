@@ -24,11 +24,50 @@ namespace MVCApplication1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Employee emps)
+        public IActionResult Create(Employee emp)
         {
-            dbContex.Employees.Add(emps);
+            if(ModelState.IsValid)
+            {
+                dbContex.Employees.Add(emp);
+                dbContex.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                return View(emp);
+            }
+           
+        }
+        public IActionResult Delete(int id)
+        {
+            var emp=dbContex.Employees.SingleOrDefault(emp=>emp.Id==id);
+            if(emp!=null)
+            {
+                dbContex.Employees.Remove(emp);
+                dbContex.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var emp = dbContex.Employees.SingleOrDefault(emp => emp.Id == id);
+            return View(emp);
+
+        }
+        [HttpPost]
+        public IActionResult Edit(Employee emp)
+        {
+           dbContex.Employees.Update(emp);
             dbContex.SaveChanges();
             return RedirectToAction("Index");
+
         }
     }
 }
